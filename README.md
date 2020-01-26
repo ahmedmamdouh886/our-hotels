@@ -17,6 +17,8 @@ Cloning this repository
 ```bash
 git clone https://github.com/ahmedmamdouh886/our-hotels.git
 cd our-hotels
+mv .env.example .env # On Linux or MAC
+php artisan key:generate
 composer install
 php artisan serve
 ``` 
