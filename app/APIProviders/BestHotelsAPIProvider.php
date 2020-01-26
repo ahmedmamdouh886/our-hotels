@@ -55,6 +55,11 @@ class BestHotelsAPIProvider implements APIProviderInterface
         return $formattedHotel;
    }
 
+   /**
+     * return providerName
+     *
+     * @return string $this->providerName
+    */
    private function getProviderName() 
    {
        return $this->providerName;

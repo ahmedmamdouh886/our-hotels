@@ -11,7 +11,7 @@ class OurHotelsAggregatorService implements OurHotelsAggregatorInterface
 	/**
      * Constructor function.
      *
-     * @param APIProviderInterface injection (DI).
+     * @param TopHotelsrovider and BestHotelsProvider injection (DI).
      */
     public function __construct(TopHotelsrovider $topHotelsrovider, BestHotelsProvider $bestHotelsProvider)
     {
@@ -19,15 +19,23 @@ class OurHotelsAggregatorService implements OurHotelsAggregatorInterface
         $this->bestHotelsProvider = $bestHotelsProvider;
     }
 
+    /**
+     * Search for hotels.
+     *
+     * @param string $from_date
+     * @param string $to_date
+     * @param string $city
+     * @param string $adults_number
+     * @return array
+     */
     public function search(string $from_date, string $to_date, string $city, int $adults_number) 
     {
         $bestHotelsProviderData = $this->bestHotelsProvider->getHotels($from_date, $to_date, $city, $adults_number);
         
         $topHotelsProviderData = $this->topHotelsrovider->getHotels($from_date, $to_date, $city, $adults_number);
-        // dd($topHotelsProviderData, $bestHotelsProviderData);
-        // $mergedHotelsProvidersData = $this->mergeProvidersData($bestHotelsProviderData, $topHotelsProviderData);
+       
         $mergedHotelsProvidersData = array_merge($bestHotelsProviderData, $topHotelsProviderData);
-        // dd($mergedHotelsProvidersData);
+        
         $sortedData = $this->sortDescByRate($mergedHotelsProvidersData);
 
         $response = $this->removwRate($sortedData);
@@ -35,6 +43,12 @@ class OurHotelsAggregatorService implements OurHotelsAggregatorInterface
         return $response;
     }
 
+     /**
+     * Sort hotels desc order by rate
+     *
+     * @param array $hotels
+     * @return array
+     */
     private function sortDescByRate(array $hotels): array
     {
     	$allHotels = $hotels;
@@ -49,6 +63,12 @@ class OurHotelsAggregatorService implements OurHotelsAggregatorInterface
     	return $allHotels;
     }
 
+     /**
+     * Remove rate item from hotels.
+     *
+     * @param array $hotels
+     * @return array
+     */
     private function removwRate(array $hotels) {
 
     	$allHotels = [];

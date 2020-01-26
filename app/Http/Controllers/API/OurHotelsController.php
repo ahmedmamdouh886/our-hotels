@@ -19,10 +19,11 @@ class OurHotelsController extends Controller
     {
         $this->hotelsAggregator = $hotelsAggregator;
     }
-    
+
     /**
      * Search hotels.
      *
+     * @param SearchRequest $request
      * @return \Illuminate\Http\Response
      */
     public function search(SearchRequest $request)

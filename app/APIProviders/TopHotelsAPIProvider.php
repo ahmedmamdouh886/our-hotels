@@ -54,12 +54,22 @@ class TopHotelsAPIProvider implements APIProviderInterface
 
         return $formattedHotel;
    }
-
+   
+    /**
+     * return providerName
+     *
+     * @return string $this->providerName
+    */
    private function getProviderName() 
    {
        return $this->providerName;
    }
 
+   /**
+     * return '*' character count.
+     *
+     * @return int
+    */
    private function calculateRate(string $rate): int
    {
        return (int) strlen($rate);
