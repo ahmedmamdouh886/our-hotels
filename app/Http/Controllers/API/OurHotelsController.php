@@ -12,13 +12,14 @@ class OurHotelsController extends Controller
 
     /**
      * Constructor function.
+     *
      * @param OurHotelsAggregatorInterface injection (DI).
      */
     public function __construct(OurHotelsAggregatorInterface $hotelsAggregator)
     {
         $this->hotelsAggregator = $hotelsAggregator;
     }
-
+    
     /**
      * Search hotels.
      *
@@ -31,6 +32,6 @@ class OurHotelsController extends Controller
             $request->input('city'), 
             $request->input('adults_number'));
 
-        return response()->json(['data' => ['hotels' => $hotels]], 200);
+        return response()->json(['data' => ['hotels' => $hotels], 'total_count' => count($hotels)], 200);
     }
 }
