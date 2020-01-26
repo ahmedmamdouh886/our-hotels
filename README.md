@@ -12,8 +12,6 @@ all the available hotels.
 
 ### Step 1
 
-Cloning this repository
-
 ```bash
 git clone https://github.com/ahmedmamdouh886/our-hotels.git
 cd our-hotels
