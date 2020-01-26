@@ -27,7 +27,7 @@ php artisan serve
 
 * visit: http://localhost:8000/api/{endpoint}?from_date=2020-08-01&to_date=2020-08-03&city=cai&adults_number=2
 
-## Structure
+## Files structure
 
 * app/API/*.php
 * app/APIProviders/*.php
