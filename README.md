@@ -16,8 +16,8 @@ all the available hotels.
 git clone https://github.com/ahmedmamdouh886/our-hotels.git
 cd our-hotels
 mv .env.example .env # On Linux or MAC
-php artisan key:generate
 composer install
+php artisan key:generate
 php artisan serve
 ``` 
 
