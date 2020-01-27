@@ -29,7 +29,7 @@ class BestHotelsAPIProvider implements APIProviderInterface
     {
         $hotels = $this->bestHotelsAPI->search($from_date, $to_date, $city, $adult_number);
 
-        return $this->formatHotel($hotels);
+        return $this->formatResponse($hotels);
     }
 
     /**
@@ -38,7 +38,7 @@ class BestHotelsAPIProvider implements APIProviderInterface
      * @param array $from
      * @return array $formattedHotel
     */
-   private function formatHotel(array $hotels): array
+   private function formatResponse(array $hotels): array
    {
         $formattedHotel = [];
 

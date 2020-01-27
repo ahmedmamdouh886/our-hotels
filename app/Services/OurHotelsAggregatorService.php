@@ -37,7 +37,7 @@ class OurHotelsAggregatorService implements OurHotelsAggregatorInterface
         $mergedHotelsProvidersData = array_merge($bestHotelsProviderData, $topHotelsProviderData);
         
         $sortedData = $this->sortDescByRate($mergedHotelsProvidersData);
-
+        
         $response = $this->removwRate($sortedData);
 
         return $response;
@@ -53,11 +53,11 @@ class OurHotelsAggregatorService implements OurHotelsAggregatorInterface
     {
     	$allHotels = $hotels;
     	uasort($allHotels, function($first, $second) {
-    		if ($first == $second) {
+    		if ($first['rate'] == $second['rate']) {
     			return 0;
     		}
 
-			return ($first > $second) ? 1 : -1;
+			return ($first['rate'] < $second['rate']) ? 1 : -1;
     	});
     	
     	return $allHotels;
